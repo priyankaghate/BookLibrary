@@ -1,2 +1,6 @@
 <h1><center>Add New Book To Library</center></h1>
-<%=render 'form'%>
+<%if admin_signed_in?%>
+	<%=render 'form'%>
+<%else%>
+	Only Admin Can Add A Book
+<%end%>
