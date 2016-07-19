@@ -1,1 +1,8 @@
 <div align="center"><h1>Welcome To The Online Book Library</h1></div>
+<%@books.each do |b|%>
+<h2>
+<%=link_to b.title, book_path(b)%>
+</h2>
+<strong><%=b.author%></strong>
+<hr>
+<%end%>
