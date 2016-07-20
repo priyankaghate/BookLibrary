@@ -1,13 +1,13 @@
 <div align="center"><h1>Welcome To The Online Book Library</h1></div>
-<hr>
-<%=link_to "Admin", new_admin_session_path%>
-<%=link_to "Log_Out", destroy_admin_session_path(current_admin), method: :delete%>
-<%=link_to "User_Log_Out", destroy_user_session_path(current_user), method: :delete%>
-<hr>
+
 <%@books.each do |b|%>
-<h2>
-<%=link_to b.title, book_path(b)%>
-</h2>
-<strong><%=b.author%></strong>
-<hr>
+ <h3><%=link_to b.title, book_path(b)%></h3>
+ <p><strong><%=b.author%></strong></p>
+ <%if admin_signed_in?%>
+  <p>
+   <%=link_to "Edit", edit_book_path(b)%> &nbsp;&nbsp;&nbsp;
+   <%=link_to "Delete", book_path(b), method: :delete, data: {confirm: "Are You Sure?"}%>
+  </p>
+ <%end%>
+ <hr>
 <%end%>

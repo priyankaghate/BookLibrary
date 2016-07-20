@@ -1,9 +1,16 @@
-<h1><center>Book Added Successfully To Library</center></h1>
-<p>
-	Title:
-	<%=@book.title%>
-</p>
-<p>
-	Author:
-	<%=@book.author%>
-</p>
+<%if admin_signed_in?%>
+<div class="notice" style="color:green">
+You have successfully added a book
+</div>
+<%end%>
+<%if user_signed_in? || admin_signed_in?%>
+ <div class="jumbotron" align="center">
+<h1>Title:<%=link_to @book.title, "/"+@book.title+".pdf"%></h1>
+<p>Author:<%=@book.author%></p>
+</div>
+<%else%>
+<div class="jumbotron" align="center">
+<h1>Title:<%=@book.title%></h1>
+<p>Author:<%=@book.author%></p>
+</div>
+<%end%>
